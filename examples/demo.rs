@@ -473,8 +473,8 @@ fn loop_update_topbar(app: &mut appctx::ApplicationContext<'_>, millis: u64) {
                 "{0:<128}",
                 format!(
                     "{0} — {1}%",
-                    battery::human_readable_charging_status().unwrap(),
-                    battery::percentage().unwrap()
+                    battery::human_readable_charging_status().unwrap_or("error".to_string()),
+                    battery::percentage().unwrap_or(-99)
                 )
             );
         }
@@ -1186,8 +1186,8 @@ fn main() {
                     "{0:<128}",
                     format!(
                         "{0} — {1}%",
-                        battery::human_readable_charging_status().unwrap(),
-                        battery::percentage().unwrap()
+                        battery::human_readable_charging_status().unwrap_or("error".to_string()),
+                        battery::percentage().unwrap_or(-99)
                     )
                 ),
                 scale: 44.0,
